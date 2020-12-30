@@ -1,4 +1,4 @@
-group 'com.miguelruivo.flutter.plugin.countrycodes.country_codes'
+group 'com.ymc.country_codes'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -31,8 +31,7 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        minSdkVersion 21
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion 16
     }
     lintOptions {
         disable 'InvalidPackage'
