@@ -48,7 +48,7 @@ class CountryCodes {
   }
 
 
-  static Future<bool> init() async {
+  static Future<bool> initialize() async {
     final String
       userCountry = await _channel.invokeMethod<String>(_kGetUserCountry),
       userLanguage = await _channel.invokeMethod<String>(_kGetUserLanguage);
@@ -72,5 +72,20 @@ class CountryCodes {
 
   static String getAlpha2CodeOf({@required String countryName}) {
     return kISOCountryCodes[countryName];
+  }
+
+  /// Method queries against the name of the country.
+  static List<String> filterCountryCodesAgainst({@required String query}) {
+    return
+      kISOCountryCodes.entries
+        .fold<List<String>>(
+          List<String>.empty(growable: true),
+          (List<String> codes, MapEntry<String, String> country) {
+            if (country.key.toLowerCase().startsWith(query)) {
+              codes.add(country.value);
+            }
+            return codes;
+          }
+        );
   }
 }
