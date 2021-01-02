@@ -17,7 +17,7 @@ class ExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final String deviceCountryCode = CountryCodes.deviceLocale.countryCode;
     
-    for (String countryCode in CountryCodes.iso3166CountryCodes) {
+    for (String countryCode in CountryCodes.isoAlpha2CountryCodes) {
       print("$countryCode ");
     }
 
@@ -28,8 +28,8 @@ class ExampleApp extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text("Country Code: $deviceCountryCode"),
-              Text("Dial Code: ${CountryCodes.dialCode(countryCode: deviceCountryCode)}"),
-              Text("Dial Code of AF: ${CountryCodes.dialCode(countryCode: "AF")}"),
+              Text("Dial Code: ${CountryCodes.getDialCodeOf(countryCode: deviceCountryCode)}"),
+              Text("Dial Code of AF: ${CountryCodes.getDialCodeOf(countryCode: "AF")}"),
             ],
           ),
         ),

@@ -12,7 +12,6 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 
 
 const val COUNTRY_CODES_METHOD_CHANNEL : String = "com.ymc/country_codes"
-const val GET_ISO_COUNTRIES : String = "getISOCountries"
 const val GET_USER_COUNTRY : String = "getUserCountry"
 const val GET_USER_LANGUAGE : String = "getUserLanguage"
 
@@ -43,7 +42,6 @@ public class CountryCodesPlugin: FlutterPlugin, MethodCallHandler {
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
 
     when (call.method) {
-        GET_ISO_COUNTRIES -> result.success(Locale.getISOCountries().toCollection(ArrayList()))
         GET_USER_COUNTRY  -> result.success(Locale.getDefault().country)
         GET_USER_LANGUAGE -> result.success(Locale.getDefault().language)
         else -> result.notImplemented()

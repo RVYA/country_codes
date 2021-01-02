@@ -4,7 +4,6 @@ import UIKit
 
 public class SwiftCountryCodesPlugin: NSObject, FlutterPlugin {
   let countryCodesMethodChannel = "com.ymc/country_codes";
-  let getISOCountries = "getISOCountries";
   let getUserCountry  =  "getUserCountry";
   let getUserLanguage = "getUserLanguage";
 
@@ -16,9 +15,6 @@ public class SwiftCountryCodesPlugin: NSObject, FlutterPlugin {
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
-      case getISOCountries:
-          result(NSLocale.isoCountryCodes)
-          break
       case getUserCountry:
           result(Locale.current.regionCode)
           break
