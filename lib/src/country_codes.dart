@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:ui' show Locale;
 
-import 'package:flutter/foundation.dart' show required;
 import 'package:flutter/services.dart';
 
 
@@ -20,36 +19,36 @@ class CountryCodes {
   static const MethodChannel
       _channel = const MethodChannel(_kCountryCodesMethodChannel);
   
-  static Locale _deviceLocale;
+  static Locale? _deviceLocale;
   static Locale get deviceLocale {
     assert(
       _deviceLocale != null,
       "Please make sure you initialized this class properly.",
     );
-    return _deviceLocale;
+    return _deviceLocale!;
   }
 
-  static List<String> _isoAlpha2CountryCodes;
+  static List<String>? _isoAlpha2CountryCodes;
   static List<String> get isoAlpha2CountryCodes {
     assert(
-      (_isoAlpha2CountryCodes != null) && (_isoAlpha2CountryCodes.isNotEmpty),
+      (_isoAlpha2CountryCodes != null) && (_isoAlpha2CountryCodes!.isNotEmpty),
       "Please make sure you initialized this class properly.",
     );
-    return _isoAlpha2CountryCodes;
+    return _isoAlpha2CountryCodes!;
   }
 
-  static List<String> _isoCountryNames;
+  static List<String>? _isoCountryNames;
   static List<String> get isoCountryNames {
     assert(
-      (_isoCountryNames != null) && (_isoCountryNames.isNotEmpty),
+      (_isoCountryNames != null) && (_isoCountryNames!.isNotEmpty),
       "Please make sure you initialized this class properly.",
     );
-    return _isoCountryNames;
+    return _isoCountryNames!;
   }
 
 
   static Future<bool> initialize() async {
-    final String
+    final String?
       userCountry = await _channel.invokeMethod<String>(_kGetUserCountry),
       userLanguage = await _channel.invokeMethod<String>(_kGetUserLanguage);
 
@@ -63,19 +62,19 @@ class CountryCodes {
               && (_isoCountryNames != null);
   }
 
-  static String getDialCodeOf({String countryCode, String countryName}) {
-    assert((countryCode != null) || (countryCode != null),
+  static String getDialCodeOf({String? countryCode, String? countryName}) {
+    assert((countryCode != null) || (countryName != null),
             "One of the parameters needs to have a valid value!");
-    return (countryCode != null)? kISOCountryDialCodes[countryCode]
-              : kISOCountryDialCodes[kISOCountryCodes[countryName]];
+    return (countryCode != null)? kISOCountryDialCodes[countryCode]!
+              : kISOCountryDialCodes[kISOCountryCodes[countryName]]!;
   }
 
-  static String getAlpha2CodeOf({@required String countryName}) {
-    return kISOCountryCodes[countryName];
+  static String getAlpha2CodeOf({required String countryName}) {
+    return kISOCountryCodes[countryName]!;
   }
 
   /// Method queries against the name of the country.
-  static List<String> filterCountryCodesAgainst({@required String query}) {
+  static List<String> filterCountryCodesAgainst({required String query}) {
     return
       kISOCountryCodes.entries
         .fold<List<String>>(

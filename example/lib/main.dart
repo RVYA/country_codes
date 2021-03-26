@@ -6,7 +6,7 @@ import 'package:country_codes/country_codes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  await CountryCodes.init();
+  await CountryCodes.initialize();
 
   runApp(ExampleApp());
 }

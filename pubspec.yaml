@@ -1,11 +1,11 @@
 name: country_codes
 description: Plugin for working with ISO Country and Dial codes.
-version: 1.0.0
+version: 1.0.1
 author: Yakup Murat ÇAYLAK
 homepage: https://github.com/RVYA/country_codes
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.20.0"
 
 dependencies:
